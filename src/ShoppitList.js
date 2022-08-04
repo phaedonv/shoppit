@@ -47,6 +47,61 @@ const ShoppitList = () => {
         >
             {data.item.text}
         </Box>
+    );
+
+    const renderHiddenItem = (data, rowMap) => (
+        <View style={StyleSheet.rowBack}>
+            <TouchableOpacity onPress={() => editRow(data.item, rowMap)}>
+                <Text>Edit</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={StyleSheet.backRightbtn} onPress={() => deleteRow(data.item)}>
+                <Text style={{color:'#FFF'}}>Delete</Text>
+            </TouchableOpacity>
+        </View>
+    );
+
+    const deleteRow = (shoppit) => {
+        dispatch({type:'delete', payload:shoppit});
+    };
+
+    const editRow = (shoppit, rowMap) => {
+        setShoppitText(shoppit.text)
+        setEditMode(true)
+        setEditShoppit(shoppit)
+        if (rowMap[shoppit.id]){
+            rowMap[shoppit.id].closeRow();
+        }
+    };
+
+    return (
+        <View style={{flex:1, marginTop:60}}>
+            <View style={{marginLeft:5,marginBottom:10}}>
+                <VStack w='100%' space={5} alignSelf="center">
+                    <Heading fontSize={'2x1'}>Shoppit!</Heading>
+                    <View style={{flexDirection:'row', marginRight:60, marginLeft:2}}>
+                        <Input
+                            placeholder='Add shoppit'
+                            onChangeText={text => setShoppitText(text)}
+                            value={shoppitText}
+                            variant='filled'
+                            width='100%'
+                            borderRadius='10'
+                            py='1'
+                            px='2'
+                            borderWidth='7'
+                            InputLeftElement={<Icon ml='2' size='7' color='gray.100.400'
+                            as={<FontAwesome5 name='pencil-art' />} />}   
+                            ></Input>
+                            <Button
+                                onPress={handleSubmit}
+                                title={buttonTitle}
+                                style={height:20}
+                            />
+                    </View>
+                </VStack>
+            </View>
+            
+        </View>
     )
 }
 
