@@ -5,7 +5,8 @@ import { SwipeListView } from 'react-native-swipe-list-view'
 import { VStack, Input, Icon, NativeBaseProvider, Box, Heading } from 'native-base'
 import uuid from 'uuid-random'
 import { FontAwesome5 } from '@expo/vector-icons'
-import { LinearGradient } from 'react-native-svg'
+
+const LinearGradient = require("expo-linear-gradient").LinearGradient;
 
 const ShoppitList = () => {
     //receive state & dispatch from App.js
@@ -78,7 +79,7 @@ const ShoppitList = () => {
         <View style={{flex:1, marginTop:60}}>
             <View style={{marginLeft:5,marginBottom:10}}>
                 <VStack w='100%' space={5} alignSelf="center">
-                    <Heading fontSize={'2x1'}>Shoppit!</Heading>
+                    <Heading fontSize={'42'}>Shoppit!</Heading>
                     <View style={{flexDirection:'row', marginRight:60, marginLeft:2}}>
                         <Input
                             placeholder='Add shoppit'
@@ -90,8 +91,8 @@ const ShoppitList = () => {
                             py='1'
                             px='2'
                             borderWidth='7'
-                            InputLeftElement={<Icon ml='2' size='7' color='gray.100.400'
-                            as={<FontAwesome5 name='pencil-art' />} />}   
+                            InputLeftElement={<Icon ml='2' size='7' color='gray.100'
+                            as={<FontAwesome5 name='pencil-alt' />} />}   
                             />
                             <Button
                                 onPress={handleSubmit}

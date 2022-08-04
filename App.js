@@ -5,7 +5,7 @@ import { Shoppit } from "./src/Shoppit";
 //default items to buy!
 
 const shoppitInitialState = {
-  todos:[
+  shoppits:[
     {id:'1', text:'pasta'},
     {id:'2', text:'oats'},
     {id:'3', text:'bananas'},
