@@ -5,6 +5,7 @@ import { SwipeListView } from 'react-native-swipe-list-view'
 import { VStack, Input, Icon, NativeBaseProvider, Box, Heading } from 'native-base'
 import uuid from 'uuid-random'
 import { FontAwesome5 } from '@expo/vector-icons'
+import { LinearGradient } from 'react-native-svg'
 
 const ShoppitList = () => {
     //receive state & dispatch from App.js
@@ -91,7 +92,7 @@ const ShoppitList = () => {
                             borderWidth='7'
                             InputLeftElement={<Icon ml='2' size='7' color='gray.100.400'
                             as={<FontAwesome5 name='pencil-art' />} />}   
-                            ></Input>
+                            />
                             <Button
                                 onPress={handleSubmit}
                                 title={buttonTitle}
@@ -100,9 +101,47 @@ const ShoppitList = () => {
                     </View>
                 </VStack>
             </View>
-            
+            <SwipeListView
+            data={state.shoppits}
+            renderItem={renderItem}
+            renderHiddenItem={renderHiddenItem}
+            leftOpenValue={75}
+            rightOpenValue={-75}
+            />
         </View>
     )
 }
 
-export default ShoppitList
+const config = {
+    dependencies: {
+        "linear-gradient" : LinearGradient
+    }
+};
+
+export default () => {
+    return (
+        <NativeBaseProvider config={config}>
+            <ShoppitList/>
+        </NativeBaseProvider>
+    )
+}
+
+const styles = StyleSheet.create({
+    rowBack:{
+        alignItems: 'center',
+        backgroundColor: '#DDD',
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: 'space-around',
+        paddingLeft: 15
+    },
+    backRightbtn:{
+        alignItems:'center',
+        bottom:0,
+        justifyContent:'center',
+        top:0,
+        width:75,
+        backgroundColor:'red',
+        right:0
+    }
+})
