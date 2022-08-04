@@ -42,7 +42,7 @@ const ShoppitList = () => {
             text={{
                 fontSize:"md",
                 fontWeight:"medium",
-                color:"warmGray.50"
+                color:"warmGray.50",
                 textAlign:"center"
             }}
         >
@@ -96,7 +96,7 @@ const ShoppitList = () => {
                             <Button
                                 onPress={handleSubmit}
                                 title={buttonTitle}
-                                style={height:20}
+                                style={{height:20}}
                             />
                     </View>
                 </VStack>
